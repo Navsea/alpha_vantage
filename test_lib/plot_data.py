@@ -21,22 +21,23 @@ file.close()
 # #plt.show()
 # fig = plt.figure(1)
 
-sns.set_style("darkgrid")
-plot = sns.lineplot(data=stockprice_df['Close'])
-plot.set(ylabel="price", title=f"{ticker} Price Over Time");
-#plt.show()
-fig = plt.figure(1)
+# sns.set_style("darkgrid")
+# plot = sns.lineplot(data=stockprice_df['Close'])
+# plot.set(ylabel="price", title=f"{ticker} Price Over Time");
+# #plt.show()
+# fig = plt.figure(1)
 
-# fig = px.line(stockprice_df['Close'])
-# fig.show()
-# # see https://plotly.com/python/interactive-html-export/
-# fig.write_html("index.html")
+# you cannot use show for some reason
+# html_str = mpld3.fig_to_html(fig)
+# Html_file= open("index.html","w")
+# Html_file.write(html_str)
+# Html_file.close()
 
-# you cannot use show for some reason, 
-html_str = mpld3.fig_to_html(fig)
-Html_file= open("index.html","w")
-Html_file.write(html_str)
-Html_file.close()
+fig = px.line(stockprice_df['Close'])
+fig.show()
+# see https://plotly.com/python/interactive-html-export/
+fig.write_html("index.html")
 
-# 
-https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
+
+# CHECK THIS OUT
+#https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
