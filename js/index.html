@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Yoooo</title>
+  </head>
+  <body>
+    <script>
+      width = window.innerWidth;
+      height = window.innerHeight;
+      console.log("width is: ", width, " ", height);
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", width);
+      svg.setAttribute("height", height);
+      document.body.appendChild(svg);
+
+      const mask_vert = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "mask"
+      );
+      mask_vert.setAttribute("id", "circle_mask");
+      const circle = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "circle"
+      );
+      circle.setAttribute("cx", width / 2);
+      circle.setAttribute("cy", height / 2);
+      circle.setAttribute("r", 100);
+      circle.setAttribute("fill", "white");
+      mask_vert.appendChild(circle);
+      svg.appendChild(mask_vert);
+
+      for (let i = 0; i < 20; i++) {
+        const rect_hor = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "rect"
+        );
+        rect_hor.setAttribute("class", "rect_hor");
+        rect_hor.setAttribute("width", width);
+        rect_hor.setAttribute("height", 20);
+        rect_hor.setAttribute("y", i * 40);
+        rect_hor.setAttribute("fill", "black");
+        svg.appendChild(rect_hor);
+      }
+
+      for (let i = 0; i < 20; i++) {
+        const rect_vert = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "rect"
+        );
+        rect_vert.setAttribute("width", 20);
+        rect_vert.setAttribute("height", height);
+        rect_vert.setAttribute("x", 40 * i);
+        rect_vert.setAttribute("fill", "black");
+        rect_vert.setAttribute("mask", "#url(#circle_mask)");
+        svg.appendChild(rect_vert);
+      }
+    </script>
+  </body>
+</html>
